@@ -42,19 +42,22 @@ def get_response(user_input):
                 "Could you please specify which service you're interested in?")
     # Check for support contact intent
     elif any(phrase in user_input_lower for phrase in support_variations):
-        return ("You can reach our customer support at support@example.com or call us at +1-234-567-890. "
+        return ("You can reach our customer support at support@example.com or call us at +91-1234-567-890. "
                 "We're here to help!")
     else:
         return "I'm sorry, I didn't understand that. Could you please rephrase your query?"
 
 # Streamlit app interface
-st.title("Simple FAQ Chatbot")
+st.title("Simple Chatbot")
 st.write("Welcome! Ask any questions you have about our services below.")
 
 # Get user input from a text field
 user_input = st.text_input("You: ", "")
 
-# When a user types a message, generate a response
+# Check user input and respond accordingly
 if user_input:
-    response = get_response(user_input)
-    st.markdown(f"**Chatbot:** {response}")
+    if user_input.lower().strip() == "exit":
+        st.markdown("**Chatbot:** Have a nice day, Goodbye!")
+    else:
+        response = get_response(user_input)
+        st.markdown(f"**Chatbot:** {response}")
