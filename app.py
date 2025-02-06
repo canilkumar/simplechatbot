@@ -1,6 +1,6 @@
 import streamlit as st
 
-def get_response(user_input):
+def process_input(user_input):
     """
     Process the user input to determine the intent and return an appropriate response.
     """
@@ -59,5 +59,5 @@ if user_input:
     if user_input.lower().strip() == "exit":
         st.markdown("**Chatbot:** Have a nice day, Goodbye!")
     else:
-        response = get_response(user_input)
+        response = process_input(user_input)
         st.markdown(f"**Chatbot:** {response}")
